@@ -1,16 +1,22 @@
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
-import React from 'react';
+import { View, Text } from 'react-native';
+import React, { useEffect } from 'react';
+import { fetchCategories } from './src/api/api';
 
 const App = () => {
+  useEffect(() => {
+
+    const getCategories = async ()=>{
+      const categories = await fetchCategories();
+      console.log(JSON.stringify(categories, null, 2) );
+    };
+    getCategories();
+  }, []);
+
   return (
-    <SafeAreaView>
-      <Text>App</Text>
-    </SafeAreaView>
+    <View>
+      <Text>Meal App</Text>
+    </View>
   );
 };
 
 export default App;
-
-const styles = StyleSheet.create({
-
-});
