@@ -1,8 +1,8 @@
-import { View, Text } from 'react-native';
 import React, { useEffect } from 'react';
 import { fetchCategories } from './src/api/api';
 import { FavouritesProvider } from './src/stores/FavouritesContext';
-import SampleScreen from './src/screens/SampleScreen';
+import { NavigationContainer } from '@react-navigation/native';
+import AppNavigator from './src/navigator/AppNavigator';
 
 const App = () => {
   useEffect(() => {
@@ -16,7 +16,9 @@ const App = () => {
 
   return (
     <FavouritesProvider>
-      <SampleScreen />
+      <NavigationContainer>
+        <AppNavigator />
+      </NavigationContainer>
     </FavouritesProvider>
   );
 };
