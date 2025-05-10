@@ -1,6 +1,8 @@
 import { View, Text } from 'react-native';
 import React, { useEffect } from 'react';
 import { fetchCategories } from './src/api/api';
+import { FavouritesProvider } from './src/stores/FavouritesContext';
+import SampleScreen from './src/screens/SampleScreen';
 
 const App = () => {
   useEffect(() => {
@@ -13,9 +15,9 @@ const App = () => {
   }, []);
 
   return (
-    <View>
-      <Text>Meal App</Text>
-    </View>
+    <FavouritesProvider>
+      <SampleScreen />
+    </FavouritesProvider>
   );
 };
 
