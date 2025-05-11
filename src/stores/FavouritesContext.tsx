@@ -8,7 +8,7 @@ export type Meal = {
 
 type FavouritesContextType = {
     favourites: Meal[];
-    addfavourites: (meal: Meal) => void;
+    addfavourite: (meal: Meal) => void;
     removeFavourite: (id: string) => void;
 }
 
@@ -17,7 +17,7 @@ const FavouritesContext = createContext<FavouritesContextType | undefined>(undef
 export const FavouritesProvider = ({ children }: { children: ReactNode }) => {
     const [favourites, setFavourites] = useState<Meal[]>([]);
 
-    const addfavourites = (meal: Meal) => {
+    const addfavourite = (meal: Meal) => {
         setFavourites((prev) => [...prev, meal]);
     };
 
@@ -26,7 +26,7 @@ export const FavouritesProvider = ({ children }: { children: ReactNode }) => {
     };
 
     return (
-    <FavouritesContext.Provider value={{ favourites, addfavourites, removeFavourite }}>
+    <FavouritesContext.Provider value={{ favourites, addfavourite, removeFavourite }}>
         {children}
     </FavouritesContext.Provider>
     );

@@ -1,6 +1,7 @@
-import { View, Text, ActivityIndicator, ScrollView, Image } from 'react-native';
+import { View, Text, ActivityIndicator, ScrollView, Image, Button } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { fetchMealDetail } from '../api/api';
+import { useFavorites } from '../stores/FavouritesContext';
 
 type Meal = {
   idMeal: string;
@@ -60,8 +61,10 @@ type Meal = {
 
 const DetailScreen = ({route}:any) => {
     const {mealId} = route.params;
-    const [meal, setMeal] = useState <Meal | null> (null);
+    const [meal, setMeal] = useState <Meal | null>(null);
     const [loading, setLoading] = useState(true);
+    const { favourites, addfavourite, removeFavourite } = useFavorites();
+    const isFavourite = favourites.some((item) => item.idMeal === meal?.idMeal);
     useEffect(() => {
         const getMeal = async () => {
             const data = await fetchMealDetail(mealId);
@@ -71,7 +74,7 @@ const DetailScreen = ({route}:any) => {
         };
         getMeal();
     }
-    , []);
+    , [mealId]);
     if (loading || !meal) {
         return (
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -85,6 +88,8 @@ const DetailScreen = ({route}:any) => {
             source={{ uri: meal.strMealThumb }}
             style={{ width: '100%', height: 200 }}
         />
+        <Button title={isFavourite ? 'Favorilerden Çıkar' : 'Favorilere Ekle'}
+        onPress={()=> isFavourite ? removeFavourite(meal.idMeal) : addfavourite(meal)} />
         <Text style={{ fontSize: 24, fontWeight: 'bold', marginVertical: 10 }}>
             {meal.strMeal}
         </Text>
