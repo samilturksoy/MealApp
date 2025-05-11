@@ -15,7 +15,7 @@ export type Meal = {
   strMealThumb: string;
 };
 
-const CategoryMealsScreen = ({ route, navigation }) => {
+const CategoryMealsScreen = ({ route, navigation }:any) => {
   const { category } = route.params;
   const [meals, setMeals] = useState<Meal[]>([]);
   const [loading, setLoading] = useState(true);
@@ -28,7 +28,7 @@ const CategoryMealsScreen = ({ route, navigation }) => {
         };
 
     getMeals();
-  }, []);
+  }, [category]);
 
   if (loading) {
     return (

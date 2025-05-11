@@ -22,4 +22,14 @@ export const fetchMealsByCategories = async (category:string)=>{
         return [];
     }
 };
+
+export const fetchMealDetail = async (id:string)=>{
+    try {
+        const response = await axios.get(`${API_URL}lookup.php?i=${id}`);
+        return response.data.meals?.[0];
+    } catch (error) {
+        console.error('Yemek detayı alınamadı',error);
+        return null;
+    }
+};
 export default API_URL;
