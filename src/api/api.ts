@@ -15,7 +15,7 @@ export const fetchCategories = async ()=>{
 
 export const fetchMealsByCategories = async (category:string)=>{
     try {
-        const response = await axios.get(`${API_URL}filter.php?${category}`);
+        const response = await axios.get(`${API_URL}filter.php?c=${category}`);
         return response.data.meals;
     } catch (error) {
         console.error(`${category} kategorisi için yemekler alınamadı`,error);
