@@ -6,6 +6,8 @@ import DetailScreen from '../screens/DetailScreen';
 import SearchScreen from '../screens/SearchScreen';
 import LikesScreen from '../screens/LikesScreen';
 import CategoryMealsScreen from '../screens/CategoryMealsScreen';
+import AlphabetListScreen from '../screens/AlphabetListScreen';
+import AreaListScreen from '../screens/AreaListScreen';
 
     const Tab = createBottomTabNavigator();
     const Stack = createNativeStackNavigator();
@@ -15,6 +17,8 @@ import CategoryMealsScreen from '../screens/CategoryMealsScreen';
                 <Stack.Screen name="HomeMain" component={HomeScreen} options={{title:'Home'}} />
                 <Stack.Screen name="Detail" component={DetailScreen} options={{title:'Meal Details'}} />
                 <Stack.Screen name="CategoryMeals" component={CategoryMealsScreen} options={{title:'Tarifler'}} />
+                <Stack.Screen name="AlphabetListScreen" component={AlphabetListScreen} options={{title:'Alfabetik'}} />
+                <Stack.Screen name="AreaListScreen" component={AreaListScreen} options={{title:'Ülkelere göre'}} />
 
             </Stack.Navigator>
         );

@@ -41,4 +41,31 @@ export const fetchMealBySearch = async (query:string)=>{
         return [];
     }
 };
+export const fetchAllMealsByLetter = async (letter:string)=>{
+    try {
+        const response = await axios.get(`${API_URL}search.php?f=${letter}`);
+        return response.data.meals || [];
+    } catch (error) {
+        console.error('letter arama hatası',error);
+        return [];
+    }
+};
+export const fetchAreas = async ()=>{
+    try {
+        const response = await axios.get(`${API_URL}list.php?a=list`);
+        return response.data.meals || [];
+    } catch (error) {
+        console.error('area arama hatası',error);
+        return [];
+    }
+};
+export const fetchMealsByArea = async (area:string)=>{
+    try {
+        const response = await axios.get(`${API_URL}filter.php?a=${area}`);
+        return response.data.meals || [];
+    } catch (error) {
+        console.error('areaya ait yemekler getirilemedi',error);
+        return [];
+    }
+};
 export default API_URL;

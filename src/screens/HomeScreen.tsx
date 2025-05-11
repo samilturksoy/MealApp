@@ -1,4 +1,4 @@
-import { View, Text, ActivityIndicator, TouchableOpacity, Image, FlatList } from 'react-native';
+import { View, Text, ActivityIndicator, TouchableOpacity, Image, FlatList, Button } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { fetchCategories } from '../api/api';
@@ -29,6 +29,9 @@ const HomeScreen = () => {
   return (
     <View>
       <Text style={{fontSize:24,fontWeight:'bold',textAlign:'center',margin:10}}>Yemek Kategorileri</Text>
+      <Button title="Alfabetik Tarifler" onPress={() => { navigation.navigate('AlphabetListScreen');}} />
+      <Button title="Ülkelere Göre  Tarifler" onPress={() => { navigation.navigate('AreaListScreen');}} />
+
       <FlatList
         data={categories}
         keyExtractor={(item) => item.idCategory}
