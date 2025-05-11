@@ -32,4 +32,13 @@ export const fetchMealDetail = async (id:string)=>{
         return null;
     }
 };
+export const fetchMealBySearch = async (query:string)=>{
+    try {
+        const response = await axios.get(`${API_URL}search.php?s=${query}`);
+        return response.data.meals || [];
+    } catch (error) {
+        console.error('Yemek arama hatası',error);
+        return [];
+    }
+};
 export default API_URL;
